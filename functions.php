@@ -275,3 +275,8 @@ require get_template_directory() . '/inc/extras.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * SVG icons functions and filters.
+ */
+require get_template_directory() . '/inc/functions-icons.php';
