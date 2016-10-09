@@ -110,11 +110,11 @@ function twentyseventeen_do_svg( $args = array() ) {
 /**
  * Display SVG icons in social links menu.
  *
- * @param string  $item_output The menu item output.
- * @param WP_Post $item        Menu item object.
- * @param int     $depth       Depth of the menu.
- * @param array   $args        wp_nav_menu() arguments.
- * @return string $item_output The menu item output with social icon.
+ * @param  string  $item_output The menu item output.
+ * @param  WP_Post $item        Menu item object.
+ * @param  int     $depth       Depth of the menu.
+ * @param  array   $args        wp_nav_menu() arguments.
+ * @return string  $item_output The menu item output with social icon.
  */
 function twentyseventeen_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 
@@ -136,6 +136,32 @@ function twentyseventeen_nav_menu_social_icons( $item_output, $item, $depth, $ar
 add_filter( 'walker_nav_menu_start_el', 'twentyseventeen_nav_menu_social_icons', 10, 4 );
 
 /**
+ * Add dropdown icon if menu item has children.
+ *
+ * @param string  $title The menu item's title.
+ * @param object  $item  The current menu item.
+ * @param array   $args  An array of wp_nav_menu() arguments.
+ * @param int     $depth Depth of menu item. Used for padding.
+ * @return string $title The menu item's title with dropdown icon.
+ */
+function twentyseventeen_dropdown_icon_to_menu_link( $title, $item, $args, $depth ) {
+
+	if ( 'top' == $args->theme_location ) {
+
+		foreach ( $item->classes as $value ) {
+			if ( $value == 'menu-item-has-children' || $value == 'page_item_has_children' ) {
+				$title =  $title . twentyseventeen_get_svg( array( 'icon' => 'expand' ) );
+			}
+		}
+
+	}
+
+	return $title;
+
+}
+add_filter( 'nav_menu_item_title', 'twentyseventeen_dropdown_icon_to_menu_link', 10, 4 );
+
+/**
  * Returns an array of supported social links (URL and icon name).
  *
  * @return array $social_links_icons
@@ -151,19 +177,19 @@ function twentyseventeen_social_links_icons() {
 		'facebook.com'    => 'facebook',
 		'flickr.com'      => 'flickr',
 		'foursquare.com'  => 'foursquare',
-		'plus.google.com' => 'googleplus',
+		'plus.google.com' => 'google-plus',
 		'github.com'      => 'github',
 		'instagram.com'   => 'instagram',
-		'linkedin.com'    => 'linkedin-alt',
-		'mailto:'         => 'mail',
-		'path.com'        => 'pinterest-alt',
-		'pinterest.com'   => 'pinterest-alt',
-		'getpocket.com'   => 'pocket',
+		'linkedin.com'    => 'linkedin',
+		'mailto:'         => 'envelope-o',
+		'path.com'        => 'path',
+		'pinterest.com'   => 'pinterest-p',
+		'getpocket.com'   => 'get-pocket',
 		'polldaddy.com'   => 'polldaddy',
-		'reddit.com'      => 'reddit',
+		'reddit.com'      => 'reddit-alien',
 		'skype.com'       => 'skype',
 		'skype:'          => 'skype',
-		'soundcloud.com'  => 'cloud',
+		'soundcloud.com'  => 'soundcloud',
 		'spotify.com'     => 'spotify',
 		'stumbleupon.com' => 'stumbleupon',
 		'tumblr.com'      => 'tumblr',
