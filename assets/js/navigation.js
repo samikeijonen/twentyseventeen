@@ -22,6 +22,9 @@
 
 		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
 
+		// Add dropdown icon for page items which has children.
+		container.find( '.page_item_has_children > a' ).append( twentyseventeenScreenReaderText.icon );
+
 		// Toggle buttons and submenu items with active children menu items.
 		container.find( '.current-menu-ancestor > button' ).addClass( 'toggled-on' );
 		container.find( '.current-menu-ancestor > .sub-menu' ).addClass( 'toggled-on' );
