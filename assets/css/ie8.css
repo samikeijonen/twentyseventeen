@@ -100,3 +100,22 @@ time.published {
 .widget a img {
 	filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=0, OffY=5, Color=#ffffff);
 }
+
+/* Icons */
+
+.social-navigation .screen-reader-text,
+.page-numbers .screen-reader-text,
+.icon ~ .screen-reader-text {
+	clip: auto;
+	position: static !important;
+	height: auto;
+	width: auto;
+	overflow: visible;
+}
+
+.social-navigation a {
+	border-radius: none;
+	height: auto;
+	padding: 0 0.5em;
+	width: auto;
+}
