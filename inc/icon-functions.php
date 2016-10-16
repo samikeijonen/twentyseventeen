@@ -90,6 +90,7 @@ function twentyseventeen_get_svg( $args = array() ) {
 		$svg .= '<use xlink:href="' . get_template_directory_uri() . '/assets/images/svg-icons.svg' . '#icon-' . esc_html( $args['icon'] ) . '"></use>';
 	} else {
 		$svg .= '<use xlink:href="#icon-' . esc_html( $args['icon'] ) . '"></use>';
+		$svg .= '<image class="fallback-image" xlink:href="" src="' . get_template_directory_uri() . '/assets/images/' . esc_html( $args['icon'] ) . '.png">';
 	}
 
 	$svg .= '</svg>';

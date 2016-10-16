@@ -2280,7 +2280,8 @@ object {
 
 /* SVG Icons base styles */
 
-.icon {
+.icon,
+.fallback-image {
 	display: inline-block;
 	fill: currentColor;
 	height: 1em;
